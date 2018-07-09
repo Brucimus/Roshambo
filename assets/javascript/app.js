@@ -42,3 +42,31 @@ connectionsRef.on("value", function(snap) {
     // The number of online users is the number of children in the connections list.
     $("#watcherNumber").text(snap.numChildren());
   });
+
+  // Player One Sit
+  $("#playerOne").on("click", function(event) {
+    event.preventDefault();
+
+    // Code for handling the push
+    database.ref().push({
+      Player1: true,
+      Selection: "",
+      Wins: 0,
+      Losses: 0,
+      Ties: 0
+    });
+});
+
+  // Player One Sit
+  $("#playerTwo").on("click", function(event) {
+    event.preventDefault();
+
+    // Code for handling the push
+    database.ref().push({
+      Player2: true,
+      Selection: "",
+      Wins: 0,
+      Losses: 0,
+      Ties: 0
+    });
+});
