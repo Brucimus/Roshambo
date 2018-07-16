@@ -1,14 +1,14 @@
 // Initialize Firebase
 var config = {
-apiKey: "AIzaSyDUSscaxURnRLcYCMYA38KklKcL8icp9qs",
-authDomain: "brucimus-testing-1.firebaseapp.com",
-databaseURL: "https://brucimus-testing-1.firebaseio.com",
-projectId: "brucimus-testing-1",
-storageBucket: "brucimus-testing-1.appspot.com",
-messagingSenderId: "978947948224"
-};
-
-firebase.initializeApp(config);
+    apiKey: "AIzaSyDkLiTBfQOr-DOg41PDG_SZ_6kkZSLJk3A",
+    authDomain: "rpsgame-44044.firebaseapp.com",
+    databaseURL: "https://rpsgame-44044.firebaseio.com",
+    projectId: "rpsgame-44044",
+    storageBucket: "",
+    messagingSenderId: "301681850370"
+  };
+  
+  firebase.initializeApp(config);
 
 // Create a variable to reference the database.
 var database = firebase.database();
@@ -24,12 +24,14 @@ var playerTwoConnection = database.ref("playerTwo");
 // '.info/connected' is a boolean value, true if the client is connected and false if they are not.
 var connectedRef = database.ref(".info/connected");
 
+//checks for players object
 rpsPlayerStatus.on("value", function() {
-    rpsPlayerStatus.set({
-        seat1: false,
-        seat2: false
-    });
-    debugger;
+    if (!database.hasOwnProperty("players")) {
+        rpsPlayerStatus.set({
+            seat1: false,
+            seat2: false
+        });
+    }
 }) 
 
 
