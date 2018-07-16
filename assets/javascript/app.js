@@ -7,7 +7,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "301681850370"
   };
-  
+
   firebase.initializeApp(config);
 
 // Create a variable to reference the database.
@@ -106,4 +106,42 @@ $("#playerTwo").on("click", function(event) {
         Losses: 0,
         Ties: 0
     });
+});
+
+//return seat value
+var ref = firebase.database().ref("players");
+ref.once("value")
+.then(function(snapshot) { 
+
+    if (
+            snapshot.child("seat1").val()
+
+        ) {
+            var rockChoice = $("<button value='rock'>");
+            var paperChoice = $("<button value='paper'>");
+            var scissorChoice = $("<button value='scissor'>");
+
+            rockChoice.text("Rock");
+            paperChoice.text("Paper");
+            scissorChoice.text("Scissor");
+
+            $("#playerOne").append(rockChoice);
+            $("#playerOne").append(paperChoice);
+            $("#playerOne").append(scissorChoice);
+        } else {
+            var sitDown = $("<button>");
+            sitDown.text("sit");
+            $("#playerOne").append(sitDown);
+        }
+
+    if (
+        ref.once("value")
+        .then(function(snapshot) { 
+            snapshot.child("seat2").val();
+        })
+        ) {
+            var rockChoice = $("<button>");
+            var paperChoice = $("<button>");
+            var scissorChoice = $("<button>");
+        }
 });
